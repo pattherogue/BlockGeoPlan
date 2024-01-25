@@ -24,3 +24,21 @@ main {
     width: 100%; /* Make the map container responsive */
     height: 400px;
 }
+
+.controls {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#select-layer {
+    padding: 5px;
+}
+
+#loading-indicator {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.hidden {
+    display: none;
+}

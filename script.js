@@ -79,11 +79,15 @@ document.getElementById('select-layer').addEventListener('change', function () {
             map.removeLayer(layer);
         }
     });
-    if (selectedLayer === 'data1') {
-        addGeoJSONLayer(data1);
-    } else if (selectedLayer === 'data2') {
-        addGeoJSONLayer(data2);
-    }
+    document.getElementById('loading-indicator').classList.remove('hidden');
+    setTimeout(function () {
+        if (selectedLayer === 'data1') {
+            addGeoJSONLayer(data1);
+        } else if (selectedLayer === 'data2') {
+            addGeoJSONLayer(data2);
+        }
+        document.getElementById('loading-indicator').classList.add('hidden');
+    }, 1000); // Simulate loading delay
 });
 
 // Initialize the map with a default GeoJSON layer
