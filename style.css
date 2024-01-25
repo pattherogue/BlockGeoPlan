@@ -44,8 +44,6 @@ main {
     display: none;
 }
 
-/* Your existing CSS styles remain unchanged */
-
 /* Additional styles for the location search */
 #location-search {
     margin: 10px;
@@ -63,4 +61,3 @@ main {
     font-size: 16px;
     cursor: pointer;
 }
-
