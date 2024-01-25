@@ -58,5 +58,12 @@ document.getElementById('select-layer').addEventListener('change', function () {
     }, 1000); // Simulate loading delay
 });
 
+// Event listener for the location search button
+document.getElementById('search-button').addEventListener('click', function () {
+    var searchQuery = document.getElementById('location-search').value;
+    // Implement location search functionality here
+    // Example: You can use a geocoding service like Leaflet's Control.Geocoder
+});
+
 // Initialize the map with a default GeoJSON layer
 addGeoJSONLayer(data1);

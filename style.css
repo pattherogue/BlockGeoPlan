@@ -30,7 +30,7 @@ main {
     text-align: center;
 }
 
-#select-layer {
+#select-layer, #location-search, #search-button {
     padding: 5px;
 }
 
