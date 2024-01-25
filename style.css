@@ -43,3 +43,24 @@ main {
 .hidden {
     display: none;
 }
+
+/* Your existing CSS styles remain unchanged */
+
+/* Additional styles for the location search */
+#location-search {
+    margin: 10px;
+    text-align: center;
+}
+
+#search-input {
+    padding: 5px;
+    width: 70%;
+    font-size: 16px;
+}
+
+#search-button {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
