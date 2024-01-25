@@ -34,7 +34,8 @@ main {
     padding: 5px;
 }
 
-#loading-indicator {
+#loading-indicator,
+#error-message {
     font-weight: bold;
     color: #007bff;
 }

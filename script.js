@@ -11,53 +11,10 @@ L.marker([51.5, -0.09]).addTo(map)
     .bindPopup('A sample marker')
     .openPopup();
 
-// Sample GeoJSON data
-var data1 = {
-    type: "FeatureCollection",
-    features: [
-        {
-            type: "Feature",
-            properties: {
-                name: "Location A",
-                description: "This is Location A"
-            },
-            geometry: {
-                type: "Point",
-                coordinates: [-0.09, 51.505]
-            }
-        },
-        {
-            type: "Feature",
-            properties: {
-                name: "Location B",
-                description: "This is Location B"
-            },
-            geometry: {
-                type: "Point",
-                coordinates: [-0.1, 51.51]
-            }
-        }
-    ]
-};
-
-// Sample GeoJSON data
-var data2 = {
-    type: "FeatureCollection",
-    features: [
-        {
-            type: "Feature",
-            properties: {
-                name: "Polygon 1",
-                description: "This is Polygon 1"
-            },
-            geometry: {
-                type: "Polygon",
-                coordinates: [
-                    [[-0.08, 51.5], [-0.08, 51.52], [-0.1, 51.52], [-0.1, 51.5], [-0.08, 51.5]]
-                ]
-            }
-        }
-    ]
+// Sample GeoJSON data URLs
+var dataUrls = {
+    data1: 'data1.geojson',
+    data2: 'data2.geojson'
 };
 
 // Function to add GeoJSON layer to the map
@@ -80,13 +37,24 @@ document.getElementById('select-layer').addEventListener('change', function () {
         }
     });
     document.getElementById('loading-indicator').classList.remove('hidden');
+    document.getElementById('error-message').classList.add('hidden');
     setTimeout(function () {
-        if (selectedLayer === 'data1') {
-            addGeoJSONLayer(data1);
-        } else if (selectedLayer === 'data2') {
-            addGeoJSONLayer(data2);
-        }
-        document.getElementById('loading-indicator').classList.add('hidden');
+        fetch(dataUrls[selectedLayer])
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(function (data) {
+                addGeoJSONLayer(data);
+                document.getElementById('loading-indicator').classList.add('hidden');
+            })
+            .catch(function (error) {
+                console.error('There was a problem with the fetch operation:', error);
+                document.getElementById('loading-indicator').classList.add('hidden');
+                document.getElementById('error-message').classList.remove('hidden');
+            });
     }, 1000); // Simulate loading delay
 });
 
