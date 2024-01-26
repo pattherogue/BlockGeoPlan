@@ -27,3 +27,42 @@ document.getElementById('search-button').addEventListener('click', function () {
     // Trigger the geocoding process
     geocoder.geocode(searchQuery);
 });
+
+
+
+
+
+/* BREAK */
+
+
+// Function to fetch GIS data from Flask backend
+function fetchGISData() {
+    fetch('/api/gis')
+        .then(response => response.json())
+        .then(data => {
+            // Handle and display GIS data on the front-end
+            console.log('GIS Data:', data.gis_data);
+            // You can customize how you display this data on the map
+        })
+        .catch(error => {
+            console.error('Error fetching GIS data:', error);
+        });
+}
+
+// Function to fetch Blockchain data from Flask backend
+function fetchBlockchainData() {
+    fetch('/api/blockchain')
+        .then(response => response.json())
+        .then(data => {
+            // Handle and display Blockchain data on the front-end
+            console.log('Blockchain Data:', data.blockchain_data);
+            // You can customize how you display this data on the front-end
+        })
+        .catch(error => {
+            console.error('Error fetching Blockchain data:', error);
+        });
+}
+
+// Call the fetchGISData and fetchBlockchainData functions when needed
+fetchGISData();
+fetchBlockchainData();
